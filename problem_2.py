@@ -14,4 +14,13 @@ def fibonacci(bound):
     return fibonacci_list
 
 
-print(sum(fibonacci(4_000_000)))
+def even_fibonacci(bound):
+    fibonacci_list = fibonacci(bound)
+    even_fibonacci_list = []
+    for term in fibonacci_list:
+        if term % 2 == 0:
+            even_fibonacci_list.append(term)
+    return even_fibonacci_list
+
+
+print(sum(even_fibonacci(4_000_000)))
