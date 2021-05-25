@@ -21,7 +21,8 @@ def prime_factors(integer):
     primes = find_primes(int(math.sqrt(integer)))
     factors = []
     for prime in primes:
-        if integer % prime == 0:
+        while integer % prime == 0:
             factors.append(prime)
-
-    return factors
+            integer /= prime
+        if integer == 1:
+            return factors
