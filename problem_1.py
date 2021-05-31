@@ -4,7 +4,8 @@
 Find the sum of all the multiples of 3 or 5 below 1000."""
 
 
-def multiple_sum(upper_bound):
+def main(upper_bound):
+    """returns the sum of the numbers that divide by 3 or 5 below 1000"""
     total = 0
     for i in range(upper_bound):
         if i % 3 == 0:
@@ -14,4 +15,4 @@ def multiple_sum(upper_bound):
     return total
 
 
-print(multiple_sum(1000))
+print(main(1000))

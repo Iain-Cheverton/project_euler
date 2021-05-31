@@ -8,6 +8,7 @@ find the sum of the even-valued terms."""
 
 
 def fibonacci(bound):
+    """returns a list of the Fibonacci sequence up to a bound"""
     fibonacci_list = [0, 1]
     while fibonacci_list[-1] + fibonacci_list[-2] < bound:
         fibonacci_list.append(fibonacci_list[-1] + fibonacci_list[-2])
@@ -15,6 +16,7 @@ def fibonacci(bound):
 
 
 def even_fibonacci(bound):
+    """returns a list of the even valued terms of the Fibonacci sequence up to a bound"""
     fibonacci_list = fibonacci(bound)
     even_fibonacci_list = []
     for term in fibonacci_list:

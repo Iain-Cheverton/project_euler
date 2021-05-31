@@ -7,11 +7,16 @@ import time
 
 start_time = time.perf_counter()
 
-largest_palindrome = 1
-for x in range(100, 1000):
-    for y in range(100, x + 1):
-        product = x * y
-        if str(product) == str(product)[::-1] and product > largest_palindrome:
-            largest_palindrome = product
 
-print(largest_palindrome, time.perf_counter() - start_time)
+def main():
+    """This function returns the largest palindrome that can be formed by multiplying 2, 3 digit numbers"""
+    largest_palindrome = 1
+    for int1 in range(100, 1000):
+        for int2 in range(100, int1 + 1):
+            product = int1 * int2
+            if str(product) == str(product)[::-1] and product > largest_palindrome:
+                largest_palindrome = product
+    return largest_palindrome
+
+
+print(main(), time.perf_counter() - start_time)
