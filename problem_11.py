@@ -2,6 +2,7 @@
 What is the greatest product of four adjacent numbers in the same direction
 (up, down, left, right, or diagonally) in the 20×20 grid?
 """
+# up and left are just duplicates of down and right but with the start and end points swapped so will not be used
 NUMBERS = """
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -24,43 +25,37 @@ NUMBERS = """
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 """
-GRID = [[int(number) for number in line.split()] for line in NUMBERS.split('\n') if line]
+GRID = [
+    [int(number) for number in line.split()] for line in NUMBERS.split("\n") if line
+]
 
 
-def horizontal(x, y):
-    if x + 3 < 20:
-        return GRID[y][x] * GRID[y][x + 1] * GRID[y][x + 2] * GRID[y][x + 3]
-    else:
-        return 0
-
-
-def vertical(x, y):
-    if y + 3 < 20:
-        return GRID[y][x] * GRID[y + 1][x] * GRID[y + 2][x] * GRID[y + 3][x]
-    else:
-        return 0
-
-
-def diagonal_y_increases(x, y):
-    if x + 3 < 20 and y + 3 < 20:
-        return GRID[y][x] * GRID[y + 1][x + 1] * GRID[y + 2][x + 2] * GRID[y + 3][x + 3]
-    else:
-        return 0
-
-
-def diagonal_y_decreases(x, y):
-    if x + 3 < 20 and y - 3 > 0:
-        return GRID[y][x] * GRID[y - 1][x + 1] * GRID[y - 2][x + 2] * GRID[y - 3][x + 3]
+def multiply_adjacent(x, y, dx, dy):
+    """This function multiplies 4 adjacent numbers from the grid"""
+    if 0 < x + 3 * dx < 20 and 0 < y + 3 * dy < 20:
+        return (
+            GRID[y][x]
+            * GRID[y + dy][x + dx]
+            * GRID[y + 2 * dy][x + 2 * dx]
+            * GRID[y + 3 * dy][x + 3 * dx]
+        )
     else:
         return 0
 
 
 def grid_max():
+    """This returns a list of lists of the maximum possible result of multiplying each entry in the grid by 4
+    adjacent numbers in any of the relevant non duplicate directions"""
     grid = GRID.copy()
     for x in range(20):
         for y in range(20):
-            grid[x][y] = max(horizontal(x, y), vertical(x, y), diagonal_y_increases(x, y), diagonal_y_decreases(x, y))
+            grid[y][x] = max(
+                multiply_adjacent(x, y, 1, 0),
+                multiply_adjacent(x, y, 0, 1),
+                multiply_adjacent(x, y, 1, 1),
+                multiply_adjacent(x, y, 1, -1),
+            )
     return grid
 
 
-print(grid_max())
+print(max(max(grid_max())))

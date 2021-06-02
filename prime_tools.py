@@ -34,7 +34,7 @@ def dict_factors(integer):
     factors = dict()
     for i in range(2, integer + 1):
         while integer % i == 0:
-            integer /= i
+            integer //= i
             if i in factors:
                 factors[i] += 1
             else:
@@ -58,3 +58,12 @@ def lcm(factor_list):
     for prime in total_factors:
         product *= prime ** total_factors[prime]
     return product
+
+
+def get_factors(integer):
+    """This returns a list of all the factors of an integer"""
+    factor_list = []
+    for divisor in range(1, integer + 1):
+        if integer % divisor == 0:
+            factor_list.append(divisor)
+    return factor_list
