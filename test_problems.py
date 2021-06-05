@@ -23,7 +23,3 @@ def test_prime_factors():
 
 def test_problem_12():
     assert problem_12.main(5) == 28
-
-
-def test_problem_16():
-    assert problem_16.main(2 ** 15) == 26

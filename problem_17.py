@@ -4,9 +4,6 @@ If all the numbers from 1 to 1000 (one thousand) inclusive were written out in w
 NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two)
 contains 23 letters and 115 (one hundred and fifteen) contains 20 letters.
  The use of "and" when writing out numbers is in compliance with British usage."""
-# one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen
-# twenty thirty forty fifty sixty seventy eighty ninety
-# hundred thousand
 LOOKUP = {
     0: None,
     1: "one",
@@ -41,29 +38,36 @@ LOOKUP = {
 
 
 def main():
+    """returns the total number of letters in all numbers between 1 and 1000 (inclusive)"""
     total_letters = 0
-    for integer in range(1, 1001):
+    for integer in range(1, 1000):
         num = str(integer)
-        if integer < 21:
-            total_letters += len(LOOKUP[integer])
-        if 20 < integer < 100:
-            if num[1] == '0':
-                total_letters += len(LOOKUP[integer])
-            else:
-                total_letters += len(LOOKUP[int(num[0] + '0')]) + len(LOOKUP[int(num[1])])
+        if 0 < integer < 100:
+            total_letters += tens_units(integer)
+        elif num.endswith("00"):
+            total_letters += len(LOOKUP[int(num[0])]) + len(LOOKUP[100])
+        else:
+            total_letters += (
+                len(LOOKUP[int(num[0])])
+                + len(LOOKUP[100])
+                + len("and")
+                + tens_units(int(num[-2:]))
+            )
+    total_letters += len("onethousand")
     return total_letters
 
 
 def tens_units(integer):
+    """returns the total number of letters for a number between 1 and 99"""
     letters = 0
     num = str(integer)
     if integer < 21:
         letters += len(LOOKUP[integer])
     if 20 < integer < 100:
-        if num[1] == '0':
+        if num[1] == "0":
             letters += len(LOOKUP[integer])
         else:
-            letters += len(LOOKUP[int(num[0] + '0')]) + len(LOOKUP[int(num[1])])
+            letters += len(LOOKUP[int(num[0] + "0")]) + len(LOOKUP[int(num[1])])
     return letters
 
 

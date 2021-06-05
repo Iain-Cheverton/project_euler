@@ -30,30 +30,29 @@ GRID = [
 ]
 
 
-def multiply_adjacent(x, y, dx, dy):
+def multiply_adjacent(column, row, d_column, d_row):
     """This function multiplies 4 adjacent numbers from the grid"""
-    if 0 < x + 3 * dx < 20 and 0 < y + 3 * dy < 20:
+    if 0 < column + 3 * d_column < 20 and 0 < row + 3 * d_row < 20:
         return (
-            GRID[y][x]
-            * GRID[y + dy][x + dx]
-            * GRID[y + 2 * dy][x + 2 * dx]
-            * GRID[y + 3 * dy][x + 3 * dx]
+            GRID[row][column]
+            * GRID[row + d_row][column + d_column]
+            * GRID[row + 2 * d_row][column + 2 * d_column]
+            * GRID[row + 3 * d_row][column + 3 * d_column]
         )
-    else:
-        return 0
+    return 0
 
 
 def grid_max():
     """This returns a list of lists of the maximum possible result of multiplying each entry in the grid by 4
     adjacent numbers in any of the relevant non duplicate directions"""
     grid = GRID.copy()
-    for x in range(20):
-        for y in range(20):
-            grid[y][x] = max(
-                multiply_adjacent(x, y, 1, 0),
-                multiply_adjacent(x, y, 0, 1),
-                multiply_adjacent(x, y, 1, 1),
-                multiply_adjacent(x, y, 1, -1),
+    for column in range(20):
+        for row in range(20):
+            grid[row][column] = max(
+                multiply_adjacent(column, row, 1, 0),
+                multiply_adjacent(column, row, 0, 1),
+                multiply_adjacent(column, row, 1, 1),
+                multiply_adjacent(column, row, 1, -1),
             )
     return grid
 

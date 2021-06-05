@@ -8,17 +8,25 @@ Although it has not been proved yet (Collatz Problem),
 it is thought that all starting numbers finish at 1.
 Which starting number, under one million, produces the longest chain?
 """
+import functools
 
 
-def collatz(n):
+@functools.cache
+def next_collatz(term):
+    """returns the next number in the collatz sequence"""
+    if term % 2 == 0:
+        term //= 2
+    else:
+        term = 3 * term + 1
+    return term
+
+
+def collatz(starting_term):
     """returns the collatz sequence formed from starting number n"""
     sequence = []
-    while n != 1:
-        sequence.append(n)
-        if n % 2 == 0:
-            n //= 2
-        else:
-            n = 3 * n + 1
+    while starting_term != 1:
+        sequence.append(starting_term)
+        starting_term = next_collatz(starting_term)
     return sequence
 
 

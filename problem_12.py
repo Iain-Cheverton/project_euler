@@ -9,8 +9,9 @@ def main(min_factors):
         prime_factors = prime_tools.dict_factors(term_number * (term_number + 1) // 2)
         for prime in prime_factors:
             total_factors *= prime_factors[prime] + 1
-        if total_factors > 500:
+        if total_factors > min_factors:
             return (term_number * (term_number + 1)) // 2
+    return "pylint made me add this"
 
 
 print(main(500))
