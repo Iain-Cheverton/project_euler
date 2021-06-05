@@ -1,3 +1,4 @@
+"""Contains various tools involving prime numbers that are reused throughout"""
 import math
 
 
@@ -20,17 +21,18 @@ def find_primes(bound):
 
 def prime_factors(integer):
     """This creates a list of all the prime factors of an integer"""
-    primes = find_primes(integer + 1)
     factors = []
-    for prime in primes:
-        while integer % prime == 0:
-            factors.append(prime)
-            integer /= prime
-        if integer == 1:
-            return factors
+    divisor = 1
+    while integer > 1:
+        divisor += 1
+        while integer % divisor == 0:
+            factors.append(divisor)
+            integer /= divisor
+    return factors
 
 
 def dict_factors(integer):
+    """returns a dictionary containing the prime factors of an integer and the maximum number of times they divide it"""
     factors = dict()
     for i in range(2, integer + 1):
         while integer % i == 0:
@@ -49,14 +51,13 @@ def lcm(factor_list):
     total_factors = {}
     for factor in factor_list:
         factor_dict = dict_factors(factor)
-        for prime in factor_dict:
-            if prime in total_factors:
-                total_factors[prime] = max(total_factors[prime], factor_dict[prime])
-            else:
-                total_factors[prime] = factor_dict[prime]
+        for prime, power in factor_dict.items():
+            total_factors[prime] = max(
+                total_factors[prime] if prime in total_factors else 0, power
+            )
     product = 1
-    for prime in total_factors:
-        product *= prime ** total_factors[prime]
+    for prime, power in total_factors.items():
+        product *= prime ** power
     return product
 
 
@@ -67,3 +68,18 @@ def get_factors(integer):
         if integer % divisor == 0:
             factor_list.append(divisor)
     return factor_list
+
+
+def next_prime(integer: int) -> int:
+    """returns the smallest prime greater than an integer"""
+    if integer < 2:
+        return 2
+    potential_prime = integer
+    primes = find_primes(integer)
+    while True:
+        potential_prime += 1
+        for divisor in primes:
+            if potential_prime % divisor == 0:
+                break
+        else:
+            return potential_prime

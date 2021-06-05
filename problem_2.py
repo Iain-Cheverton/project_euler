@@ -25,4 +25,5 @@ def even_fibonacci(bound):
     return even_fibonacci_list
 
 
-print(sum(even_fibonacci(4_000_000)))
+if __name__ == "__main__":
+    print(sum(even_fibonacci(4_000_000)))

@@ -15,4 +15,5 @@ def main(upper_bound):
     return total
 
 
-print(main(1000))
+if __name__ == "__main__":
+    print(main(1000))
