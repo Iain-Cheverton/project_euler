@@ -64,9 +64,10 @@ def lcm(factor_list):
 def get_factors(integer):
     """This returns a list of all the factors of an integer"""
     factor_list = []
-    for divisor in range(1, integer + 1):
+    for divisor in range(1, integer // 2 + 1):
         if integer % divisor == 0:
             factor_list.append(divisor)
+    factor_list.append(integer)
     return factor_list
 
 

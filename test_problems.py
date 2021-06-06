@@ -3,6 +3,7 @@ import prime_tools
 import problem_1
 import problem_2
 import problem_12
+import problem_21
 
 
 def test_fibonacci():
@@ -34,3 +35,8 @@ def test_prime_tools():
     """the prime after 1 should be 2"""
     assert prime_tools.next_prime(1) == 2
     assert prime_tools.prime_factors(2) == [2]
+
+
+def test_problem_21():
+    """220 and 284 should be an amicable pair"""
+    assert problem_21.amicable_pair(220) == 284
