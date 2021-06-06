@@ -4,6 +4,7 @@ import problem_1
 import problem_2
 import problem_12
 import problem_21
+import problem_22
 
 
 def test_fibonacci():
@@ -40,3 +41,9 @@ def test_prime_tools():
 def test_problem_21():
     """220 and 284 should be an amicable pair"""
     assert problem_21.amicable_pair(220) == 284
+
+
+def test_problem_22():
+    """the 938th name should be COLIN and should have the value provided in the question"""
+    assert problem_22.NAMES[937] == "COLIN"
+    assert sum(problem_22.VALUES[letter] for letter in problem_22.NAMES[937]) == 53

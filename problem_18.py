@@ -8,6 +8,8 @@ the maximum total from top to bottom is 23.
 That is, 3 + 7 + 4 + 9 = 23.
 Find the maximum total from top to bottom of the triangle below:
 """
+import copy
+
 TRIANGLE = """
 75
 95 64
@@ -31,18 +33,18 @@ GRID = [
 
 
 def main():
-    """returns a list of lists containing the maximum value a path to that element can sum to"""
-    grid_max = GRID.copy()
+    """returns a list of lists containing the maximum value that a path to that element can sum to"""
+    grid_max = copy.deepcopy(GRID)
     for row in range(1, 15):
-        for number in range(row + 1):
-            if number and number < row:
-                grid_max[row][number] += max(
-                    grid_max[row - 1][number - 1], grid_max[row - 1][number]
+        for column in range(row + 1):
+            if column and column < row:
+                grid_max[row][column] += max(
+                    grid_max[row - 1][column - 1], grid_max[row - 1][column]
                 )
-            elif number:
-                grid_max[row][number] += grid_max[row - 1][number - 1]
+            elif column:
+                grid_max[row][column] += grid_max[row - 1][column - 1]
             else:
-                grid_max[row][number] += grid_max[row - 1][number]
+                grid_max[row][column] += grid_max[row - 1][column]
     return grid_max
 
 

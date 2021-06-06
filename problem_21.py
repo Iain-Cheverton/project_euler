@@ -11,21 +11,18 @@ import prime_tools
 
 def main():
     """adds up all the amicable numbers under 10000"""
-    total = 0
-    for number in range(1, 10000):
-        total += number if amicable_pair(number) else 0
-    return total
+    return sum(number for number in range(1, 10000) if amicable_pair(number))
 
 
 def amicable_pair(number):
-    """if the number has an amicable pair return it else return False"""
+    """if the number has an amicable pair return it else return 0"""
     paired_number = sum(prime_tools.get_factors(number)[:-1])
     if (
         sum(prime_tools.get_factors(paired_number)[:-1]) == number
         and number != paired_number
     ):
         return paired_number
-    return False
+    return 0
 
 
 if __name__ == "__main__":
