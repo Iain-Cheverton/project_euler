@@ -9,7 +9,7 @@ find the sum of the even-valued terms."""
 
 def fibonacci(bound):
     """returns a list of the Fibonacci sequence up to a bound"""
-    fibonacci_list = [0, 1]
+    fibonacci_list = [1, 1]
     while fibonacci_list[-1] + fibonacci_list[-2] < bound:
         fibonacci_list.append(fibonacci_list[-1] + fibonacci_list[-2])
     return fibonacci_list

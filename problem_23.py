@@ -15,7 +15,8 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 import prime_tools
 
 abundant_numbers = []
-for number in range(3000):
+for number in range(30000):
     if sum(prime_tools.get_factors(number)[:-1]) > number:
         abundant_numbers.append(number)
-print(abundant_numbers)
+abundant_sums = {x + y for x in abundant_numbers for y in abundant_numbers}
+print(sum(set(range(28124)) - abundant_sums))

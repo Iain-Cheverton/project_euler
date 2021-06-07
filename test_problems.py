@@ -1,4 +1,6 @@
 """This contains pytest tests for the code in this directory"""
+import itertools
+
 import prime_tools
 import problem_1
 import problem_2
@@ -8,8 +10,8 @@ import problem_22
 
 
 def test_fibonacci():
-    """this tests the function fibonacci in problem_2"""
-    assert problem_2.fibonacci(100) == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+    """this tests that the function fibonacci in problem_2 is equal to the sequence provided"""
+    assert problem_2.fibonacci(100) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
 
 def test_problem_1():
@@ -47,3 +49,9 @@ def test_problem_22():
     """the 938th name should be COLIN and should have the value provided in the question"""
     assert problem_22.NAMES[937] == "COLIN"
     assert sum(problem_22.VALUES[letter] for letter in problem_22.NAMES[937]) == 53
+
+
+def test_problem_23():
+    """permutations should be in lexicographic order if the initial string was also in lexicographic order"""
+    test_list = ["".join(term) for term in list(itertools.permutations("1234"))]
+    assert test_list == sorted(test_list)
