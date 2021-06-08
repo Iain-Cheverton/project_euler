@@ -16,7 +16,9 @@ def collatz(starting_term):
     """returns the length of the collatz sequence from the starting term"""
     if starting_term % 2 == 0:
         return 1 + collatz(starting_term // 2)
-    return 1 + collatz(3 * starting_term + 1) if starting_term - 1 else 1
+    if starting_term - 1:
+        return 1 + collatz(3 * starting_term + 1)
+    return 1
 
 
 def main():
