@@ -12,22 +12,11 @@ import functools
 
 
 @functools.cache
-def next_collatz(term):
-    """returns the next number in the collatz sequence"""
-    if term % 2 == 0:
-        term //= 2
-    else:
-        term = 3 * term + 1
-    return term
-
-
 def collatz(starting_term):
-    """returns the collatz sequence formed from starting number n"""
-    sequence = []
-    while starting_term != 1:
-        sequence.append(starting_term)
-        starting_term = next_collatz(starting_term)
-    return sequence
+    """returns the length of the collatz sequence from the starting term"""
+    if starting_term % 2 == 0:
+        return 1 + collatz(starting_term // 2)
+    return 1 + collatz(3 * starting_term + 1) if starting_term - 1 else 1
 
 
 def main():
@@ -38,7 +27,7 @@ def main():
     longest_sequence = 1
     starting_number = 1
     for i in range(1, 1_000_000):
-        sequence_length = len(collatz(i))
+        sequence_length = collatz(i)
         if sequence_length > longest_sequence:
             longest_sequence = sequence_length
             starting_number = i
