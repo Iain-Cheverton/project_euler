@@ -7,6 +7,7 @@ import problem_2
 import problem_12
 import problem_21
 import problem_22
+import problem_26
 
 
 def test_fibonacci():
@@ -55,3 +56,10 @@ def test_problem_23():
     """permutations should be in lexicographic order if the initial string was also in lexicographic order"""
     test_list = ["".join(term) for term in list(itertools.permutations("1234"))]
     assert test_list == sorted(test_list)
+
+
+def test_cycle_length():
+    """the length of the recurring cycles should match those provided"""
+    assert problem_26.cycle_length(7) == 6
+    assert problem_26.cycle_length(6) == 1
+    assert problem_26.cycle_length(3) == 1
