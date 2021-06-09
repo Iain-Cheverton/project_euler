@@ -8,6 +8,7 @@ import problem_12
 import problem_21
 import problem_22
 import problem_26
+import problem_27
 
 
 def test_fibonacci():
@@ -63,3 +64,9 @@ def test_cycle_length():
     assert problem_26.cycle_length(7) == 6
     assert problem_26.cycle_length(6) == 1
     assert problem_26.cycle_length(3) == 1
+
+
+def test_consecutive_primes():
+    """the number of consecutive primes from"""
+    assert problem_27.consecutive_primes(-79, 1601) == 80
+    assert problem_27.consecutive_primes(1, 41) == 40
