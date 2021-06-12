@@ -8,4 +8,4 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 
 """
 import itertools
 
-print("".join(list(itertools.permutations("0123456789"))[10 ** 6 - 1]))
+print("".join(list(itertools.permutations("0123456789"))[999_999]))

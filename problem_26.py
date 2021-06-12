@@ -18,11 +18,15 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 
 
 def cycle_length(divisor):
-    """returns the length of the recurring cycle of 1 / divisor"""
+    """returns the length of the recurring cycle of 1 / divisor
+    this uses a pair of dictionaries since both keys and values are unique and this means that either the position can
+    be used to find the remainder or the remainder used to find the position which is needed to remove the leading terms
+    which do not repeat"""
     position = 1
-    remainder_lookup = {1: 10}
-    positions_lookup = {10: 1}
-    while (remainder_lookup[position] % divisor) * 10 not in remainder_lookup.values():
+    # starting with a remainder of 10 since none of the divisors divide 1 and it gives the correct length
+    remainder_lookup = {1: 10}  # maps positions to remainders
+    positions_lookup = {10: 1}  # maps remainders to the first position they appear
+    while (remainder_lookup[position] % divisor) * 10 not in positions_lookup:
         position += 1
         remainder_lookup[position] = (remainder_lookup[position - 1] % divisor) * 10
         positions_lookup[(remainder_lookup[position - 1] % divisor) * 10] = position
@@ -37,12 +41,13 @@ def cycle_length(divisor):
 
 def main():
     """finds the the integer under 1000 with the longest recurring cycle"""
-    current_longest = (0, 0)
+    longest_integer, longest_length = 0, 0
     for integer in range(2, 1000):
         length = cycle_length(integer)
-        if length > current_longest[1]:
-            current_longest = (integer, length)
-    return current_longest[0]
+        if length > longest_length:
+            longest_integer, longest_length = integer, length
+    return longest_integer
 
 
-print(main())
+if __name__ == "__main__":
+    print(main())

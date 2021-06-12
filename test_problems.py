@@ -9,6 +9,7 @@ import problem_21
 import problem_22
 import problem_26
 import problem_27
+import problem_28
 
 
 def test_fibonacci():
@@ -24,6 +25,7 @@ def test_problem_1():
 def test_find_primes():
     """this tests the function find_primes against a list of the primes under 10"""
     assert prime_tools.find_primes(10) == [2, 3, 5, 7]
+    assert prime_tools.find_primes(2) == [2]
 
 
 def test_prime_factors():
@@ -67,6 +69,11 @@ def test_cycle_length():
 
 
 def test_consecutive_primes():
-    """the number of consecutive primes from"""
+    """the number of consecutive primes from the provided equations should match the number given in the problem"""
     assert problem_27.consecutive_primes(-79, 1601) == 80
     assert problem_27.consecutive_primes(1, 41) == 40
+
+
+def test_problem_28():
+    """the sum of the diagonals of a 5 by 5 square should be 101"""
+    assert sum(problem_28.square(5)) == 101

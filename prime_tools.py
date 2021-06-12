@@ -4,19 +4,14 @@ import math
 
 def find_primes(bound):
     """This creates a list of all primes up to a bound"""
-    primes = [2]
-    temp_primes = [2]
-    for i in range(2, bound + 1):
-        root = math.sqrt(i)
-        for prime in primes:
-            if i % prime == 0:
-                break
-            if prime > root:
-                temp_primes.append(i)
-                break
-        primes = temp_primes
-
-    return primes
+    # find_primes(10**7) took 36.908335738 before optimisation
+    is_prime = [True] * (bound + 1)
+    is_prime[0], is_prime[1] = False, False
+    for i in range(math.ceil(math.sqrt(bound))):
+        if is_prime[i]:
+            for multiple in range(i * 2, bound + 1, i):
+                is_prime[multiple] = False
+    return [integer for integer in range(bound + 1) if is_prime[integer]]
 
 
 def prime_factors(integer):

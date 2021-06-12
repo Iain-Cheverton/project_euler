@@ -1,14 +1,24 @@
-"""https://projecteuler.net/problem=27"""
+"""
+The description of this problem contains too many mathematical formulae to write in plain text but can be found at:
+https://projecteuler.net/problem=27
+"""
 import prime_tools
 
 
 def consecutive_primes(linear, constant):
     """returns the number of consecutive primes formed by the sequence:
     n ** 2 + linear * n + constant starting from n = 0"""
-    primes = 0
-    while len(prime_tools.get_factors(primes ** 2 + linear * primes + constant)) == 2:
-        primes += 1
-    return primes
+    prime_count = 0
+    while (
+        len(
+            prime_tools.get_factors(
+                prime_count * prime_count + linear * prime_count + constant
+            )
+        )
+        == 2
+    ):
+        prime_count += 1
+    return prime_count
 
 
 def main():
