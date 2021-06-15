@@ -47,9 +47,7 @@ def lcm(factor_list):
     for factor in factor_list:
         factor_dict = dict_factors(factor)
         for prime, power in factor_dict.items():
-            total_factors[prime] = max(
-                total_factors[prime] if prime in total_factors else 0, power
-            )
+            total_factors[prime] = max(total_factors[prime] if prime in total_factors else 0, power)
     product = 1
     for prime, power in total_factors.items():
         product *= prime ** power

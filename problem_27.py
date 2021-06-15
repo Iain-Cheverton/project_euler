@@ -9,14 +9,7 @@ def consecutive_primes(linear, constant):
     """returns the number of consecutive primes formed by the sequence:
     n ** 2 + linear * n + constant starting from n = 0"""
     prime_count = 0
-    while (
-        len(
-            prime_tools.get_factors(
-                prime_count * prime_count + linear * prime_count + constant
-            )
-        )
-        == 2
-    ):
+    while len(prime_tools.get_factors(prime_count * prime_count + linear * prime_count + constant)) == 2:
         prime_count += 1
     return prime_count
 

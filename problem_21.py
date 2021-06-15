@@ -17,10 +17,7 @@ def main():
 def amicable_pair(number):
     """if the number has an amicable pair return it else return 0"""
     paired_number = sum(prime_tools.get_factors(number)[:-1])
-    if (
-        sum(prime_tools.get_factors(paired_number)[:-1]) == number
-        and number != paired_number
-    ):
+    if sum(prime_tools.get_factors(paired_number)[:-1]) == number and number != paired_number:
         return paired_number
     return 0
 

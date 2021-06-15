@@ -10,6 +10,7 @@ import problem_22
 import problem_26
 import problem_27
 import problem_28
+import problem_30
 
 
 def test_fibonacci():
@@ -77,3 +78,8 @@ def test_consecutive_primes():
 def test_problem_28():
     """the sum of the diagonals of a 5 by 5 square should be 101"""
     assert sum(problem_28.square(5)) == 101
+
+
+def test_problem_30():
+    """the powers of 4 should match those given in the question"""
+    assert problem_30.sum_of_powers(4) == [1634, 8208, 9474]

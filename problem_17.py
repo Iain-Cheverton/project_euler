@@ -47,12 +47,7 @@ def main():
         elif num.endswith("00"):
             total_letters += len(LOOKUP[int(num[0])]) + len(LOOKUP[100])
         else:
-            total_letters += (
-                len(LOOKUP[int(num[0])])
-                + len(LOOKUP[100])
-                + len("and")
-                + tens_units(int(num[-2:]))
-            )
+            total_letters += len(LOOKUP[int(num[0])]) + len(LOOKUP[100]) + len("and") + tens_units(int(num[-2:]))
     total_letters += len("onethousand")
     return total_letters
 

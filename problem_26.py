@@ -31,11 +31,7 @@ def cycle_length(divisor):
         remainder_lookup[position] = (remainder_lookup[position - 1] % divisor) * 10
         positions_lookup[(remainder_lookup[position - 1] % divisor) * 10] = position
     if 0 not in remainder_lookup.values():
-        return (
-            len(remainder_lookup)
-            - positions_lookup[(remainder_lookup[position] % divisor) * 10]
-            + 1
-        )
+        return len(remainder_lookup) - positions_lookup[(remainder_lookup[position] % divisor) * 10] + 1
     return 0
 
 

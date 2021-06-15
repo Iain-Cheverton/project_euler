@@ -27,9 +27,7 @@ TRIANGLE = """
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """
-GRID = [
-    [int(number) for number in line.split()] for line in TRIANGLE.split("\n") if line
-]
+GRID = [[int(number) for number in line.split()] for line in TRIANGLE.split("\n") if line]
 
 
 def main():
@@ -38,9 +36,7 @@ def main():
     for row in range(1, 15):
         for column in range(row + 1):
             if column and column < row:
-                grid_max[row][column] += max(
-                    grid_max[row - 1][column - 1], grid_max[row - 1][column]
-                )
+                grid_max[row][column] += max(grid_max[row - 1][column - 1], grid_max[row - 1][column])
             elif column:
                 grid_max[row][column] += grid_max[row - 1][column - 1]
             else:
