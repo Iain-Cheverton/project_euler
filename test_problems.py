@@ -12,6 +12,7 @@ import problem_27
 import problem_28
 import problem_29
 import problem_30
+import problem_32
 
 
 def test_fibonacci():
@@ -89,3 +90,8 @@ def test_problem_29():
 def test_problem_30():
     """the powers of 4 should match those given in the question"""
     assert problem_30.sum_of_powers(4) == [1634, 8208, 9474]
+
+
+def test_problem_32():
+    """the provided example should be in the set"""
+    assert 7254 in problem_32.main()
