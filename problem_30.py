@@ -13,11 +13,11 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 def sum_of_powers(power):
     """all the numbers where if their digits are raised to the power given sum to make that number"""
     valid_sums = []
-    for integer in range(10, 9 ** power * (power + 1)):
+    for integer in range(10, 9 ** power * (power + 1)):  # the upper bound  was derived analytically and is overly large
         if sum([int(digit) ** power for digit in str(integer)]) == integer:
             valid_sums.append(integer)
     return valid_sums
 
 
 if __name__ == "__main__":
-    print(sum(sum_of_powers(5)))
+    print(sum_of_powers(5))

@@ -10,6 +10,7 @@ import problem_22
 import problem_26
 import problem_27
 import problem_28
+import problem_29
 import problem_30
 
 
@@ -78,6 +79,11 @@ def test_consecutive_primes():
 def test_problem_28():
     """the sum of the diagonals of a 5 by 5 square should be 101"""
     assert sum(problem_28.square(5)) == 101
+
+
+def test_problem_29():
+    """the distinct terms should match those provided in the example"""
+    assert problem_29.main(6, 6) == {4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125}
 
 
 def test_problem_30():

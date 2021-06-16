@@ -10,9 +10,10 @@ Starting with the number 1 and moving to the right in a clockwise direction a 5 
 It can be verified that the sum of the numbers on the diagonals is 101.
 What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
 """
+from typing import List
 
 
-def square(side_length):
+def square(side_length: int) -> List[int]:
     """returns the diagonals of a square with the input side length as described in the problem"""
     diagonals = [1]
     step = 2
