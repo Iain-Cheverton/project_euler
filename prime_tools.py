@@ -2,16 +2,21 @@
 import math
 
 
-def find_primes(bound):
-    """This creates a list of all primes up to a bound"""
-    # find_primes(10**7) took 36.908335738 before optimisation
+def is_prime_array(bound):
+    """creates a list of True/False values where true corresponds to prime numbers"""
     is_prime = [True] * (bound + 1)
     is_prime[0], is_prime[1] = False, False
     for i in range(math.ceil(math.sqrt(bound))):
         if is_prime[i]:
             for multiple in range(i * 2, bound + 1, i):
                 is_prime[multiple] = False
-    return [integer for integer in range(bound + 1) if is_prime[integer]]
+    return is_prime
+
+
+def find_primes(bound):
+    """This creates a list of all primes up to a bound"""
+    is_prime_list = is_prime_array(bound)
+    return [integer for integer in range(bound + 1) if is_prime_list[integer]]
 
 
 def prime_factors(integer):
