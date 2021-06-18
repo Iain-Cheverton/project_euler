@@ -5,6 +5,7 @@ It is possible to make £2 in the following way:
 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 How many different ways can £2 be made using any number of coins?
 """
+import time
 
 
 def main():
@@ -30,4 +31,13 @@ def last_bit(x_1, x_2, x_5, x_10, x_20):
     return section_permutations
 
 
-print(main())
+# todo
+# def combination_count(total: int, coins: List[int]) -> int:
+# """Returns the number of ways to make total with the list of coins"""
+# some stuff
+#   combination_count(total-(number of highest denomination coins, coins[:-1]
+# todo tell david how much faster it went afterwards so that he smiles
+
+
+start = time.perf_counter()
+print(main(), time.perf_counter() - start)
