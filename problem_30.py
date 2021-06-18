@@ -7,17 +7,19 @@ As 1 = 1**4 is not a sum it is not included.
 The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 """
-# 9 ** 5 * 6 = 354294 < 999999 so this is a suitable limit
+from typing import List
 
 
-def sum_of_powers(power):
-    """all the numbers where if their digits are raised to the power given sum to make that number"""
+def sums_of_power(power: int) -> List[int]:
+    """all the numbers where if their digits are raised to the power given, sum to make that number"""
     valid_sums = []
-    for integer in range(10, 9 ** power * (power + 1)):  # the upper bound  was derived analytically and is overly large
+    # the upper bound  was derived analytically and is true for all powers since (10/9)^n > (n+1)/10 for all real n
+    # for example 9 ** 5 * 6 = 354294 < 999999
+    for integer in range(10, 9 ** power * (power + 1)):
         if sum([int(digit) ** power for digit in str(integer)]) == integer:
             valid_sums.append(integer)
     return valid_sums
 
 
 if __name__ == "__main__":
-    print(sum_of_powers(5))
+    print(sums_of_power(5))

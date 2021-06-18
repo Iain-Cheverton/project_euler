@@ -14,12 +14,10 @@ from typing import List
 
 
 def square(side_length: int) -> List[int]:
-    """returns the diagonals of a square with the input side length as described in the problem"""
+    """returns the diagonals of a square with the input side length, as described in the problem"""
     diagonals = [1]
-    step = 2
-    while diagonals[-1] + step <= side_length ** 2 + 1:
+    for step in range(2, side_length, 2):
         diagonals += [diagonals[-1] + integer * step for integer in range(1, 5)]
-        step += 2
     return diagonals
 
 

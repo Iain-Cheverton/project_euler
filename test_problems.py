@@ -78,8 +78,8 @@ def test_consecutive_primes():
 
 
 def test_problem_28():
-    """the sum of the diagonals of a 5 by 5 square should be 101"""
-    assert sum(problem_28.square(5)) == 101
+    """the diagonals of a 5 by 5 square should be [1, 3, 5, 7, 9, 13, 17, 21, 25]"""
+    assert problem_28.square(5) == [1, 3, 5, 7, 9, 13, 17, 21, 25]
 
 
 def test_problem_29():
@@ -89,7 +89,7 @@ def test_problem_29():
 
 def test_problem_30():
     """the powers of 4 should match those given in the question"""
-    assert problem_30.sum_of_powers(4) == [1634, 8208, 9474]
+    assert problem_30.sums_of_power(4) == [1634, 8208, 9474]
 
 
 def test_problem_32():
