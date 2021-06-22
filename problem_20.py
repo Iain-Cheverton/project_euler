@@ -17,4 +17,5 @@ def main():
     return sum(int(digit) for digit in number)
 
 
-print(main())
+if __name__ == '__main__':
+    print(main())

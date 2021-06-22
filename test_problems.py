@@ -13,6 +13,8 @@ import problem_28
 import problem_29
 import problem_30
 import problem_32
+import problem_33
+import problem_34
 
 
 def test_fibonacci():
@@ -95,3 +97,13 @@ def test_problem_30():
 def test_problem_32():
     """the provided example should be in the set"""
     assert 7254 in problem_32.main()
+
+
+def test_problem_33():
+    """the case provided should not return False"""
+    assert problem_33.check_division(49, 98)
+
+
+def test_sum_of_integers():
+    """145 should equal the sum of its digits factorials"""
+    assert 145 == problem_34.sum_of_factorials(145)
