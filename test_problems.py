@@ -15,6 +15,7 @@ import problem_30
 import problem_32
 import problem_33
 import problem_34
+import problem_35
 
 
 def test_fibonacci():
@@ -107,3 +108,9 @@ def test_problem_33():
 def test_sum_of_integers():
     """145 should equal the sum of its digits factorials"""
     assert 145 == problem_34.sum_of_factorials(145)
+
+
+def test_problem_35():
+    """the circular primes below 100 should match the ones given"""
+    assert problem_35.main(100) == {2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97}
+    assert 197 in problem_35.main(1000)

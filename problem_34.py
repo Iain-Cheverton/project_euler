@@ -9,7 +9,8 @@ import problem_20
 def main():
     """returns all the curious_numbers"""
     curious_numbers = []
-    for integer in range(3, 10**6):
+    # 9! * 7 is a suitable limit since 9999999 > 9! * 7
+    for integer in range(3, problem_20.factorial(9) * 7):
         if sum_of_factorials(integer) == integer:
             curious_numbers.append(integer)
     return curious_numbers
