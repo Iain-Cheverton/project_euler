@@ -21,5 +21,5 @@ def sum_of_factorials(integer):
     return sum([problem_20.factorial(int(digit)) for digit in str(integer)])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(sum(main()))

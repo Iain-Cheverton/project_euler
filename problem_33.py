@@ -24,11 +24,7 @@ def check_division(numerator, denominator):
     """returns a new numerator and denominator for a fraction,
      if it can be simplified by 'cancelling' a digit from each"""
     for digit in str(denominator):
-        if (
-            digit in str(numerator)
-            and str(denominator).replace(digit, "")
-            and str(numerator).replace(digit, "")
-        ):
+        if digit in str(numerator) and str(denominator).replace(digit, "") and str(numerator).replace(digit, ""):
             new_denominator = int(str(denominator).replace(digit, ""))
             new_numerator = int(str(numerator).replace(digit, ""))
             if new_numerator and new_denominator:
@@ -37,7 +33,6 @@ def check_division(numerator, denominator):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     to_print = main()
     print(to_print[0] // to_print[0], to_print[1] // to_print[0])
-

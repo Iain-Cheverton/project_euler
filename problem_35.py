@@ -21,5 +21,5 @@ def main(bound):
     return circular_primes
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(len(main(1_000_000)))

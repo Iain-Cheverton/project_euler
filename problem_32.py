@@ -20,7 +20,8 @@ def main() -> Set[int]:
         for larger_factor in range(9877):
             product = smaller_factor * larger_factor
             # todo convert this to use sets of digits. Remember set("123")
-            combined_digits = str(smaller_factor) + str(larger_factor) + str(product)
+            # using set('1233') removes the duplicate 3 so allows false positives
+            combined_digits = list(str(smaller_factor) + str(larger_factor) + str(product))
             if len(combined_digits) == 9:
                 for digit in "123456789":
                     if digit not in combined_digits:

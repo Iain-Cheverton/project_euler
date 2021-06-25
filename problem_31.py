@@ -6,6 +6,9 @@ It is possible to make £2 in the following way:
 How many different ways can £2 be made using any number of coins?
 """
 import time
+from typing import List
+
+COINS = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
 def main():
@@ -31,13 +34,19 @@ def last_bit(x_1, x_2, x_5, x_10, x_20):
     return section_permutations
 
 
-# todo
-# def combination_count(total: int, coins: List[int]) -> int:
-# """Returns the number of ways to make total with the list of coins"""
-# some stuff
-#   combination_count(total-(number of highest denomination coins, coins[:-1]
-# todo tell david how much faster it went afterwards so that he smiles
+def combination_count(total: int, coins: List[int]) -> int:
+    """Returns the number of ways to make total with the list of coins"""
+    if total == 0:
+        return 1
+    combinations = 0
+    if coins:
+        for number_of_highest_denomination_coins in range(total // coins[-1] + 1):
+            combinations += combination_count(total - number_of_highest_denomination_coins * coins[-1], coins[:-1])
+    return combinations
+
+
+# 24.2219546 before 0.6690868 after
 
 
 start = time.perf_counter()
-print(main(), time.perf_counter() - start)
+print(combination_count(200, COINS), time.perf_counter() - start)
