@@ -7,7 +7,7 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
 import prime_tools
 
-PRIMES = prime_tools.find_primes(1000000)
+PRIMES = prime_tools.find_primes(1_000_000)
 
 
 def main():

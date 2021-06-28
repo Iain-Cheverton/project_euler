@@ -5,47 +5,31 @@ It is possible to make £2 in the following way:
 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 How many different ways can £2 be made using any number of coins?
 """
+import functools
 import time
-from typing import List
+from typing import Tuple
 
-COINS = [1, 2, 5, 10, 20, 50, 100, 200]
-
-
-def main():
-    """returns the number of different ways can £2 be made using the possible coins"""
-    possible_permutations = 0
-    for x_1 in range(201):
-        for x_2 in range((200 - x_1) // 2 + 1):
-            for x_5 in range((200 - x_1 - x_2 * 2) // 5 + 1):
-                for x_10 in range((200 - x_1 - x_2 * 2 - x_5 * 5) // 10 + 1):
-                    for x_20 in range((200 - x_1 - x_2 * 2 - x_5 * 5 - x_10 * 10) // 20 + 1):
-                        possible_permutations += last_bit(x_1, x_2, x_5, x_10, x_20)
-    return possible_permutations
+COINS = 1, 2, 5, 10, 20, 50, 100, 200
 
 
-def last_bit(x_1, x_2, x_5, x_10, x_20):
-    """returns all the possible permutations for given numbers of the smaller coins"""
-    section_permutations = 0
-    for x_50 in range(5):
-        for x_100 in range(3):
-            for x_200 in range(2):
-                if x_1 + x_2 * 2 + x_5 * 5 + x_10 * 10 + x_20 * 20 + x_50 * 50 + x_100 * 100 + x_200 * 200 == 200:
-                    section_permutations += 1
-    return section_permutations
-
-
-def combination_count(total: int, coins: List[int]) -> int:
+@functools.cache
+def combination_count(total: int, coins: Tuple[int]) -> int:
     """Returns the number of ways to make total with the list of coins"""
     if total == 0:
         return 1
     combinations = 0
     if coins:
-        for number_of_highest_denomination_coins in range(total // coins[-1] + 1):
-            combinations += combination_count(total - number_of_highest_denomination_coins * coins[-1], coins[:-1])
+        highest_denomination_coin = coins[-1]
+        for number_of_highest_denomination_coins in range(total // highest_denomination_coin + 1):
+            combinations += combination_count(
+                total - number_of_highest_denomination_coins * highest_denomination_coin, coins[:-1]
+            )
     return combinations
 
 
-# 24.2219546 before 0.6690868 after
+# 24.2219546 runtime for original solution with loops
+# 0.6690868 runtime after recursion
+# 0.005155999999999994 runtime after caching
 
 
 start = time.perf_counter()
