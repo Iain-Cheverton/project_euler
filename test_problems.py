@@ -16,6 +16,7 @@ import problem_32
 import problem_33
 import problem_34
 import problem_35
+import problem_36
 
 
 def test_fibonacci():
@@ -114,3 +115,8 @@ def test_problem_35():
     """the circular primes below 100 should match the ones given"""
     assert problem_35.main(100) == {2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97}
     assert 197 in problem_35.main(1000)
+
+
+def test_problem_36():
+    """585 should be palindromic in both base 10 and 2"""
+    assert problem_36.double_palindrome(585)

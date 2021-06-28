@@ -9,9 +9,14 @@ def main():
     """returns a list of all numbers under 1000000 that are palindromic in both base 10 and 2"""
     double_palindromes = []
     for integer in range(1_000_000):
-        if str(integer) == str(integer)[::-1] and bin(integer)[2:] == bin(integer)[:1:-1]:
+        if double_palindrome(integer):
             double_palindromes.append(integer)
     return double_palindromes
+
+
+def double_palindrome(integer: int):
+    """True if the integer is palindromic in both 10 and 2 else false"""
+    return True if str(integer) == str(integer)[::-1] and bin(integer)[2:] == bin(integer)[:1:-1] else False
 
 
 if __name__ == "__main__":
