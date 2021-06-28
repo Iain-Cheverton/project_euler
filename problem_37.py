@@ -11,14 +11,16 @@ PRIMES = prime_tools.find_primes(1000000)
 
 
 def main():
+    """returns all the truncatable primes larger than 10"""
     truncated_primes = []
     for prime in PRIMES:
-        if ltr_prime(prime) and rtl_prime(prime):
+        if lt_prime(prime) and rt_prime(prime):
             truncated_primes.append(prime)
     return truncated_primes[4:]
 
 
-def ltr_prime(prime):
+def lt_prime(prime):
+    """True if the prime is left truncatable"""
     string = str(prime)
     while string[1:]:
         string = string[1:]
@@ -30,7 +32,8 @@ def ltr_prime(prime):
     return False
 
 
-def rtl_prime(prime):
+def rt_prime(prime):
+    """True if the prime is right truncatable"""
     string = str(prime)
     while string[:-1]:
         string = string[:-1]
@@ -42,5 +45,5 @@ def rtl_prime(prime):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(sum(main()))

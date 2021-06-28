@@ -16,7 +16,7 @@ def main():
 
 def double_palindrome(integer: int):
     """True if the integer is palindromic in both 10 and 2 else false"""
-    return True if str(integer) == str(integer)[::-1] and bin(integer)[2:] == bin(integer)[:1:-1] else False
+    return str(integer) == str(integer)[::-1] and bin(integer)[2:] == bin(integer)[:1:-1]
 
 
 if __name__ == "__main__":

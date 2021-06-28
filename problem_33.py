@@ -8,7 +8,7 @@ If the product of these four fractions is given in its lowest common terms, find
 
 
 def main():
-    """returns the product of the numerators and denominators of the four desired fractions """
+    """returns the product of the numerators and denominators of the four desired fractions"""
     total_numerator = 1
     total_denominator = 1
     for denominator in range(10, 100):
@@ -22,7 +22,7 @@ def main():
 
 def check_division(numerator, denominator):
     """returns a new numerator and denominator for a fraction,
-     if it can be simplified by 'cancelling' a digit from each"""
+    if it can be simplified by 'cancelling' a digit from each"""
     for digit in str(denominator):
         if digit in str(numerator) and str(denominator).replace(digit, "") and str(numerator).replace(digit, ""):
             new_denominator = int(str(denominator).replace(digit, ""))

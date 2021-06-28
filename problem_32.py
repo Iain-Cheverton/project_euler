@@ -19,15 +19,10 @@ def main() -> Set[int]:
         # 9876 is the largest 4 digit integer using each digit at most once
         for larger_factor in range(9877):
             product = smaller_factor * larger_factor
-            # todo convert this to use sets of digits. Remember set("123")
             # using set('1233') removes the duplicate 3 so allows false positives
-            combined_digits = list(str(smaller_factor) + str(larger_factor) + str(product))
-            if len(combined_digits) == 9:
-                for digit in "123456789":
-                    if digit not in combined_digits:
-                        break
-                else:
-                    products.add(product)
+            combined_digits = str(smaller_factor) + str(larger_factor) + str(product)
+            if len(combined_digits) == 9 and set(combined_digits) == set("123456789"):
+                products.add(product)
     return products
 
 

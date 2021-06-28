@@ -108,7 +108,7 @@ def test_problem_33():
 
 def test_sum_of_integers():
     """145 should equal the sum of its digits factorials"""
-    assert 145 == problem_34.sum_of_factorials(145)
+    assert problem_34.sum_of_factorials(145) == 145
 
 
 def test_problem_35():
