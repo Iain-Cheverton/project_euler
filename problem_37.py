@@ -5,18 +5,21 @@ Similarly we can work from right to left: 3797, 379, 37, and 3.
 Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
 NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
+import time
+
 import prime_tools
 
-PRIMES = prime_tools.find_primes(1_000_000)
+IS_PRIME = prime_tools.is_prime_array(1_000_000)
 
 
 def main():
     """returns all the truncatable primes larger than 10"""
     truncated_primes = []
-    for prime in PRIMES:
-        if lt_prime(prime) and rt_prime(prime):
-            truncated_primes.append(prime)
-    return truncated_primes[4:]
+    # the first 4 primes are removed since the question explicitly excludes them
+    for integer in range(10, 1_000_000):
+        if IS_PRIME[integer] and lt_prime(integer) and rt_prime(integer):
+            truncated_primes.append(integer)
+    return truncated_primes
 
 
 def lt_prime(prime):
@@ -25,11 +28,9 @@ def lt_prime(prime):
     while string[1:]:
         string = string[1:]
         if string[0]:
-            if int(string) not in PRIMES:
-                break
-    else:
-        return True
-    return False
+            if not IS_PRIME[int(string)]:
+                return False
+    return True
 
 
 def rt_prime(prime):
@@ -38,12 +39,15 @@ def rt_prime(prime):
     while string[:-1]:
         string = string[:-1]
         if string[0]:
-            if int(string) not in PRIMES:
-                break
-    else:
-        return True
-    return False
+            if not IS_PRIME[int(string)]:
+                return False
+    return True
 
 
 if __name__ == "__main__":
-    print(sum(main()))
+    # print(timeit.timeit("5 in PRIMES", globals=globals()))
+    # print(timeit.timeit("IS_PRIME[5]", globals=globals()))
+    start = time.perf_counter()
+
+    print(sum(main()), time.perf_counter() - start)
+# runtime before optimisation = 72.9893086
