@@ -50,4 +50,5 @@ if __name__ == "__main__":
     start = time.perf_counter()
 
     print(sum(main()), time.perf_counter() - start)
-# runtime before optimisation = 72.9893086
+# runtime before optimisation = 72.9893086, after switching to is_prime_array = 0.0922085
+# to do continue review
