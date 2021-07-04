@@ -6,7 +6,7 @@ How many circular primes are there below one million?
 import prime_tools
 
 
-def main(bound):
+def main(bound: int) -> set[int]:
     """returns a set of all circular primes below a bound"""
     circular_primes = set()
     is_prime = prime_tools.is_prime_array(bound)

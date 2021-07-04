@@ -5,22 +5,23 @@ There are exactly four non-trivial examples of this type of fraction, less than 
 and containing two digits in the numerator and denominator.
 If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
 """
+import math
+import typing
 
 
-def main():
+def main() -> typing.Tuple[int, int]:
     """returns the product of the numerators and denominators of the four desired fractions"""
     total_numerator = 1
     total_denominator = 1
     for denominator in range(10, 100):
         for numerator in range(10, denominator):
-            fraction = check_division(numerator, denominator)
-            if fraction:
-                total_numerator *= fraction[0]
-                total_denominator *= fraction[1]
+            if check_division(numerator, denominator):
+                total_numerator *= numerator
+                total_denominator *= denominator
     return total_numerator, total_denominator
 
 
-def check_division(numerator, denominator):
+def check_division(numerator: int, denominator: int) -> bool:
     """returns a new numerator and denominator for a fraction,
     if it can be simplified by 'cancelling' a digit from each"""
     for digit in str(denominator):
@@ -29,10 +30,11 @@ def check_division(numerator, denominator):
             new_numerator = int(str(numerator).replace(digit, ""))
             if new_numerator and new_denominator:
                 if numerator / denominator == new_numerator / new_denominator and int(str(denominator)[-1]):
-                    return new_numerator, new_denominator
+                    return True
     return False
 
 
 if __name__ == "__main__":
-    to_print = main()
-    print(to_print[0] // to_print[0], to_print[1] // to_print[0])
+    unsimplified_fraction = main()
+    hcf = math.gcd(unsimplified_fraction[0], unsimplified_fraction[1])
+    print(f"{unsimplified_fraction[0] // hcf} / {unsimplified_fraction[1] // hcf}")

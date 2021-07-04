@@ -17,6 +17,7 @@ import problem_33
 import problem_34
 import problem_35
 import problem_36
+import problem_37
 
 
 def test_fibonacci():
@@ -106,8 +107,8 @@ def test_problem_33():
     assert problem_33.check_division(49, 98)
 
 
-def test_sum_of_integers():
-    """145 should equal the sum of its digits factorials"""
+def test_sum_of_factorials():
+    """145 should equal the sum of its digit's factorials"""
     assert problem_34.sum_of_factorials(145) == 145
 
 
@@ -120,3 +121,12 @@ def test_problem_35():
 def test_problem_36():
     """585 should be palindromic in both base 10 and 2"""
     assert problem_36.double_palindrome(585)
+    assert not problem_36.double_palindrome(8)
+    assert not problem_36.double_palindrome(17)
+    assert not problem_36.double_palindrome(18)
+
+
+def test_problem_37():
+    """3797 should be both a left truncatable prime and a right truncatable prime"""
+    assert problem_37.lt_prime(3797)
+    assert problem_37.rt_prime(3797)

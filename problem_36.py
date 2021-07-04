@@ -7,11 +7,7 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 
 def main():
     """returns a list of all numbers under 1000000 that are palindromic in both base 10 and 2"""
-    double_palindromes = []
-    for integer in range(1_000_000):
-        if double_palindrome(integer):
-            double_palindromes.append(integer)
-    return double_palindromes
+    return list(filter(double_palindrome, range(1_000_000)))
 
 
 def double_palindrome(integer: int):
