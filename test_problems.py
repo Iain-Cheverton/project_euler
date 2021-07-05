@@ -19,6 +19,7 @@ import problem_35
 import problem_36
 import problem_37
 import problem_38
+import problem_39
 
 
 def test_fibonacci():
@@ -140,3 +141,8 @@ def test_problem_37():
 def test_problem_38():
     """The given example should be in the set of concatenated products"""
     assert "192384576" in problem_38.main()
+
+
+def test_problem_39():
+    """120 should have 3 solutions"""
+    assert problem_39.solution_count(120) == 3
