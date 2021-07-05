@@ -45,11 +45,7 @@ def rt_prime(prime):
 
 
 if __name__ == "__main__":
-    # print(timeit.timeit("5 in PRIMES", globals=globals()))
-    # print(timeit.timeit("IS_PRIME[5]", globals=globals()))
     start = time.perf_counter()
-
     print(sum(main()), time.perf_counter() - start)
-# runtime before optimisation = 72.9893086, after switching to is_prime_array = 0.0922085
-# to do continue review, fix git token
-# to do delete this comment
+# Runtime before optimisation = 72.9893086, after switching to is_prime_array = 0.0922085
+# I rewrote it using recursion and memoize but this ran slower: 0.11913520000000002 so I reverted this

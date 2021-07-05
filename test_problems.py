@@ -18,6 +18,7 @@ import problem_34
 import problem_35
 import problem_36
 import problem_37
+import problem_38
 
 
 def test_fibonacci():
@@ -130,3 +131,12 @@ def test_problem_37():
     """3797 should be both a left truncatable prime and a right truncatable prime"""
     assert problem_37.lt_prime(3797)
     assert problem_37.rt_prime(3797)
+    assert not problem_37.rt_prime(13)
+    assert problem_37.lt_prime(13)
+    assert problem_37.rt_prime(31)
+    assert not problem_37.lt_prime(31)
+
+
+def test_problem_38():
+    """The given example should be in the set of concatenated products"""
+    assert "192384576" in problem_38.main()
