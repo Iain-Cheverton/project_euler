@@ -140,7 +140,10 @@ def test_problem_37():
 
 def test_problem_38():
     """The given example should be in the set of concatenated products"""
-    assert "192384576" in problem_38.main()
+    pandigital_set = problem_38.main()
+    assert 192384576 in pandigital_set
+    # this is the correct answer as calculated by the program and checked on project euler
+    assert max(pandigital_set) == 932718654
 
 
 def test_problem_39():

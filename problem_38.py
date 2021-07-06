@@ -12,8 +12,8 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 """
 
 
-def main():
-    """Returns a set of all the concatenated product of an integer with (1,2, ... , n) where n > 1"""
+def main() -> set[int]:
+    """Returns a set of all the concatenated products of an integer with (1,2, ... , n) where n > 1"""
     pandigital_products = set()
     for integer in range(10_000):
         product = ""
@@ -22,8 +22,9 @@ def main():
             product += str(multiplier * integer)
             multiplier += 1
         if len(product) == 9 and set(product) == set("123456789"):
-            pandigital_products.add(product)
+            pandigital_products.add(int(product))
     return pandigital_products
 
 
-print(max(main()))
+if __name__ == "__main__":
+    print(main())

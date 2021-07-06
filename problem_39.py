@@ -9,21 +9,21 @@ For which value of p ≤ 1000, is the number of solutions maximised?
 def main():
     """Returns the perimeter with the largest number of solutions for right angle triangles with integer side length"""
     current_max = (0, 0)
-    for perimeter in range(1001):
+    for perimeter in range(2, 1001, 2):
         if solution_count(perimeter) > current_max[0]:
-            current_max = (solution_count(perimeter), perimeter)
-    return current_max[1]
+            current_max = solution_count(perimeter), perimeter
+    return current_max
 
 
 def solution_count(perimeter):
     """Returns the number of solutions for right angle triangles with integer side length for a given perimeter"""
     count = 0
-    for medium_side in range(perimeter // 2):
-        for short_side in range(min(medium_side + 1, perimeter - 2 * medium_side)):
-            if (perimeter - medium_side - short_side) * (
-                perimeter - medium_side - short_side
-            ) == medium_side * medium_side + short_side * short_side:
-                count += 1
+    for side in range(1, perimeter // 2):
+        # the second non-hypotenuse side can be calculated to be:
+        # (2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))
+        # by substitution using the identities a^2 + b^2 = c^2 and a + b + c = perimeter
+        # if there is an integer solution to this expression then
+        count += ((2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))).is_integer()
     return count
 
 
