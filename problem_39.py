@@ -22,7 +22,9 @@ def solution_count(perimeter):
         # the second non-hypotenuse side can be calculated to be:
         # (2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))
         # by substitution using the identities a^2 + b^2 = c^2 and a + b + c = perimeter
-        # if there is an integer solution to this expression then
+        # if there is an integer solution to this expression then the hypotenuse is also integer since it can be written
+        # as c = perimeter - a - b where a,b perimeter are all integer
+        # so we have an integer solution and can increase the count
         count += ((2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))).is_integer()
     return count
 
