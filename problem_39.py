@@ -19,14 +19,17 @@ def solution_count(perimeter):
     """Returns the number of solutions for right angle triangles with integer side length for a given perimeter"""
     count = 0
     for side in range(1, perimeter // 2):
+        # By substitution using the identities a^2 + b^2 = c^2 and a + b + c = perimeter,
         # the second non-hypotenuse side can be calculated to be:
         # (2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))
-        # by substitution using the identities a^2 + b^2 = c^2 and a + b + c = perimeter
-        # if there is an integer solution to this expression then the hypotenuse is also integer since it can be written
-        # as c = perimeter - a - b where a,b perimeter are all integer
-        # so we have an integer solution and can increase the count
+        # If there is an integer solution to this expression then the hypotenuse is also integer since it can be written
+        # as c = perimeter - a - b where a,b perimeter are all integer.
+        # Therefore we have an integer solution and can increase the count.
         count += ((2 * perimeter * side - perimeter * perimeter) / (2 * (side - perimeter))).is_integer()
-    return count
+        # Each solution is counted twice, when the variable side takes the two different side lengths of the solution
+        # There are no un-duplicated solutions since this means both sides are equal,
+        # and then the hypotenuse is an integer multiple of sqrt(2) so non integer
+    return count // 2
 
 
 if __name__ == "__main__":

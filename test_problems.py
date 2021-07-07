@@ -20,6 +20,7 @@ import problem_36
 import problem_37
 import problem_38
 import problem_39
+import problem_40
 
 
 def test_fibonacci():
@@ -129,7 +130,8 @@ def test_problem_36():
 
 
 def test_problem_37():
-    """3797 should be both a left truncatable prime and a right truncatable prime"""
+    """3797 should be both a left truncatable prime and a right truncatable prime,
+    also testing both positives and negatives for both"""
     assert problem_37.lt_prime(3797)
     assert problem_37.rt_prime(3797)
     assert not problem_37.rt_prime(13)
@@ -149,3 +151,8 @@ def test_problem_38():
 def test_problem_39():
     """120 should have 3 solutions"""
     assert problem_39.solution_count(120) == 3
+
+
+def test_problem_40():
+    """the given fraction should match the generated one"""
+    assert problem_40.concatenate_integers(22) == "0123456789101112131415161718192021"
