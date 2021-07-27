@@ -18,11 +18,7 @@ def fibonacci(bound):
 def even_fibonacci(bound):
     """returns a list of the even valued terms of the Fibonacci sequence up to a bound"""
     fibonacci_list = fibonacci(bound)
-    even_fibonacci_list = []
-    for term in fibonacci_list:
-        if term % 2 == 0:
-            even_fibonacci_list.append(term)
-    return even_fibonacci_list
+    return [term for term in fibonacci_list if not term % 2]
 
 
 if __name__ == "__main__":
