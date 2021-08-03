@@ -4,5 +4,4 @@ Hence the difference between the sum of the squares of the first ten natural num
 Find the difference between:
 the sum of the squares of the first one hundred natural numbers and the square of the sum."""
 naturals = range(1, 101)
-naturals_squared = [x ** 2 for x in naturals]
-print(sum(naturals) ** 2 - sum(naturals_squared))
+print(sum(naturals) ** 2 - sum(x * x for x in naturals))

@@ -92,7 +92,23 @@ def test_problem_28():
 
 def test_problem_29():
     """the distinct terms should match those provided in the example"""
-    assert problem_29.main(6, 6) == {4, 8, 9, 16, 25, 27, 32, 64, 81, 125, 243, 256, 625, 1024, 3125}
+    assert problem_29.main(6, 6) == {
+        4,
+        8,
+        9,
+        16,
+        25,
+        27,
+        32,
+        64,
+        81,
+        125,
+        243,
+        256,
+        625,
+        1024,
+        3125,
+    }
 
 
 def test_problem_30():

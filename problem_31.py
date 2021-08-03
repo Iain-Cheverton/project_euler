@@ -22,7 +22,8 @@ def combination_count(total: int, coins: Tuple[int]) -> int:
         highest_denomination_coin = coins[-1]
         for number_of_highest_denomination_coins in range(total // highest_denomination_coin + 1):
             combinations += combination_count(
-                total - number_of_highest_denomination_coins * highest_denomination_coin, coins[:-1]
+                total - number_of_highest_denomination_coins * highest_denomination_coin,
+                coins[:-1],
             )
     return combinations
 
