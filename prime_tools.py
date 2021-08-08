@@ -82,3 +82,6 @@ def next_prime(integer: int) -> int:
                 break
         else:
             return potential_prime
+
+
+# def is_prime()
