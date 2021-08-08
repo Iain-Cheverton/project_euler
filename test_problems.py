@@ -21,6 +21,7 @@ import problem_37
 import problem_38
 import problem_39
 import problem_40
+import problem_41
 
 
 def test_fibonacci():
@@ -172,3 +173,9 @@ def test_problem_39():
 def test_problem_40():
     """the given fraction should match the generated one"""
     assert problem_40.concatenate_integers(22) == "0123456789101112131415161718192021"
+
+
+def test_problem_41():
+    """The given example should be prime and pandigital"""
+    assert prime_tools.is_prime_array(2143)[-1]
+    assert 2143 in problem_41.pandigitals(4)
