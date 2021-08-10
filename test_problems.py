@@ -22,6 +22,7 @@ import problem_38
 import problem_39
 import problem_40
 import problem_41
+import problem_42
 
 
 def test_fibonacci():
@@ -179,3 +180,9 @@ def test_problem_41():
     """The given example should be prime and pandigital"""
     assert prime_tools.is_prime_array(2143)[-1]
     assert 2143 in problem_41.pandigitals(4)
+
+
+def test_problem_42():
+    """SKY should be in the set of words and should be triangular"""
+    assert "SKY" in problem_42.WORDS
+    assert problem_42.triangle("SKY")
