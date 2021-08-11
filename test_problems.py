@@ -23,16 +23,17 @@ import problem_39
 import problem_40
 import problem_41
 import problem_42
-
-
-def test_fibonacci():
-    """this tests that the function fibonacci in problem_2 is equal to the sequence provided"""
-    assert problem_2.fibonacci(100) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+import problem_43
 
 
 def test_problem_1():
     """this tests problem_1 using the example given by project euler"""
     assert problem_1.main(10) == 23
+
+
+def test_problem_2():
+    """this tests that the function fibonacci in problem_2 is equal to the sequence provided"""
+    assert problem_2.fibonacci(100) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
 
 def test_find_primes():
@@ -179,10 +180,15 @@ def test_problem_40():
 def test_problem_41():
     """The given example should be prime and pandigital"""
     assert prime_tools.is_prime_array(2143)[-1]
-    assert 2143 in problem_41.pandigitals(4)
+    assert 2143 in problem_41.pandigitals(1, 5)
 
 
 def test_problem_42():
     """SKY should be in the set of words and should be triangular"""
     assert "SKY" in problem_42.WORDS
     assert problem_42.triangle("SKY")
+
+
+def test_problem_43():
+    """the given example should fulfil the property"""
+    assert problem_43.property_check(1406357289)
