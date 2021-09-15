@@ -29,6 +29,7 @@ import problem_43
 def test_problem_1():
     """this tests problem_1 using the example given by project euler"""
     assert problem_1.main(10) == 23
+    assert problem_1.main(20) == 78
 
 
 def test_problem_2():
@@ -56,6 +57,8 @@ def test_prime_tools():
     """the prime after 1 should be 2"""
     assert prime_tools.next_prime(1) == 2
     assert prime_tools.prime_factors(2) == [2]
+    assert prime_tools.lcm([1, 2, 4, 9]) == 36
+    assert prime_tools.next_prime(9) == 11
 
 
 def test_problem_21():
@@ -127,6 +130,8 @@ def test_problem_32():
 def test_problem_33():
     """the case provided should not return False"""
     assert problem_33.check_division(49, 98)
+    assert not problem_33.check_division(49, 97)
+    assert problem_33.main() == (387296, 38729600)
 
 
 def test_sum_of_factorials():
