@@ -12,4 +12,5 @@ def main(max_int, max_power):
     return {integer ** power for integer in range(2, max_int) for power in range(2, max_power)}
 
 
-print(len(main(101, 101)))
+if __name__ == "__main__":
+    print(len(main(101, 101)))
